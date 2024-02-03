@@ -1,7 +1,6 @@
 from time import sleep
 import keyboard
 
-# gravar após cada interação, evitar mais o erro para o cliente.
 
 
 lista = list()
@@ -412,6 +411,7 @@ def menu_principal():
     carregamento_de_dados()
 
     while True:
+        salvar_produtos()
         limpar_tela()
         linhas_divisorias()
         print('Bem vindo ao Sistema WP'.center(30))
