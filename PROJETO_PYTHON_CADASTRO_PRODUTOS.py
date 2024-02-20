@@ -23,6 +23,10 @@ def buscar_produtos():
             print('Procurar produtos'.center(30))
             linhas_divisorias()
 
+            hora = datetime.now()
+            print(f'Data {hora.strftime("%A, %d de %B de %Y. %H:%M:%S")}')
+            linhas_divisorias()
+
             print('''
 Escolha uma das opções:
 \033[34m[1]\033[m - Busca por código
@@ -41,6 +45,10 @@ Escolha uma das opções:
                 print('Procurar produtos por código'.center(30))
                 linhas_divisorias()
 
+                hora = datetime.now()
+                print(f'Data {hora.strftime("%A, %d de %B de %Y. %H:%M:%S")}')
+                linhas_divisorias()
+
                 while True:
                     try:
                         nome = int(input('Digite o código do produto [0 cancelar]: '))
@@ -51,7 +59,7 @@ Escolha uma das opções:
 
                         if t:
                             linhas_divisorias()
-                            print(f'\033[32mProduto encontrado!\033[m \nCódigo:{t[0]} \nNome: {t[1]} \nDescrição: {t[2]} \nPreço.Custo: R${t[3]:.2f} \nPreç.Venda {t[4]} \nMargem {t[5]}% \nVencimento {t[6]}')
+                            print(f'\033[32mProduto encontrado!\033[m \nCódigo:{t[0]} \nNome: {t[1]} \nDescrição: {t[2]} \nPreço.Custo: R${t[3]:.2f} \nPreç.Venda {t[4]} \nMargem {t[5]:.2f}% \nVencimento {t[6]}')
                         else:
                             print('\033[31mProduto não encontrado\033[m.')
 
@@ -63,6 +71,11 @@ Escolha uma das opções:
                 linhas_divisorias()
                 print('Procurar produtos por nome'.center(30))
                 linhas_divisorias()
+
+                hora = datetime.now()
+                print(f'Data {hora.strftime("%A, %d de %B de %Y. %H:%M:%S")}')
+                linhas_divisorias()
+
                 while True:
                     try:
                         palavra = input('Digite o nome do produto [sair p/ voltar]: ').upper().strip()
@@ -92,12 +105,12 @@ Escolha uma das opções:
             print('Digite apenas números.')
 
 
-
 def encontrar_produto_por_codigo(substituivel):
     for produto in lista:
         if produto[0] == substituivel:
             return produto
     return None
+
 
 def encontrar_produto_por_nome(nome):
     produtos_encontrados = []
@@ -484,7 +497,7 @@ def cadastrar_produto():
             custo_produto = float(input('Digite o preço de custo do produto: ').replace(',', '.'))
             if custo_produto == 0:
                 continuar_operacao = False
-            elif custo_produto < 1:
+            elif custo_produto < 0:
                 print('\033[31mErro, Valores negativos não são aceitos\033[m')
             else:
                 break
